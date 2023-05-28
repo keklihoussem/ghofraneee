@@ -1,0 +1,177 @@
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper" [ngClass]="status ? 'hide' : 'show'">
+      <div class="sidebar-heading"><br><img id="logo" src="../../../assets/projet interface11.png" width="350px"></div>
+      <div class="list-group list-group-flush">
+          <a href="agence" class="list-group-item list-group-item-action bg-light" id="input" ><br>
+              <i class="uil-home-alt" ></i> <span> page d'accueil  </span>
+          </a>
+          <a href="cheque" class="list-group-item list-group-item-action bg-light" id="input"> 
+              <i class="pi pi-pencil"></i>
+              <span> Saisie Chéque </span>
+          </a>
+          <a href="suivie" class="list-group-item list-group-item-action bg-light" id="input">
+              <i class="pi pi-server"></i>
+              <span> Suivie des Chéques </span>
+          </a>
+          <a href="recherche" class="list-group-item list-group-item-action bg-light" id="input">
+              <i class="pi pi-search"></i>
+              <span> Recherche Opération </span>
+          </a>
+          <a href="fin" class="list-group-item list-group-item-action bg-light" id="input">
+              <i class="pi pi-clock"></i>
+              <span> Fin Journée </span>
+          </a>
+      </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+           
+          
+            <div class="container-fluid">
+                <button class="button-menu-mobile open-left" id="input" (click)="clickEvent()">
+                    <i class="mdi mdi-menu"></i>
+                </button>
+            </div>
+            <li style="list-style-type: none;" class="dropdown notification-list">
+                <a data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <span class="account-user-avatar">
+                        <img src="assets/images/users/avatar-1.jpg" id="user" width="30px" alt="" class="rounded-circle">
+                    </span>
+                    <span class="account-position">  Dominic Keller</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="mdi mdi-account-circle me-1"></i>
+                        <span>My Account</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="mdi mdi-account-edit me-1"></i>
+                        <span>Settings</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item" (click)="Deconnexion()">
+                        <i class="mdi mdi-logout me-1"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </li>
+
+        </nav>
+
+        <div class="container-fluid"><br>
+            
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                            <!-- Formulaire principal -->
+                            <form #mainForm="ngForm" class="row g-3">
+                              <br><br><h1>Saisie de chèque</h1>
+                              <div class="col-md-6">
+                                <label for="input" class="form-label">Numéro de bordereaux</label>
+                                <input type="text" class="form-control" name="bordereau0" [(ngModel)]="numeroBordereau" >
+                              </div>
+                              <div class="col-md-6">
+                                <label for="input" class="form-label">Numéro de chèque</label>
+                                <input type="text" class="form-control" name="cheque0" [(ngModel)]="numeroCheque" >
+                              </div>
+                              <div class="col-md-6">
+                                <label for="input" class="form-label">Montant</label>
+                                <input type="text" class="form-control" name="montant0" [(ngModel)]="montant">
+                              </div>
+                              <div class="col-md-6">
+                                <label for="input" class="form-label">Devise</label>
+                                <select class="form-select" aria-label="Default select example" name="devise0" [(ngModel)]="devise" id="sel1">
+                                  <option value="Dollar">Dollar</option>
+                                  <option value="Euro">Euro</option>
+                                  <option value="TND">TND</option>
+                                </select><br><br></div>
+                                <div class="row">
+                                    <div class="col-8">
+                                      <label class="btn btn-default p-0">
+                                        <input type="file" (change)="selectFile($event)"  />
+                                      </label>
+                                    </div>
+                                  <div *ngIf="currentFile" class="progress my-3">
+                                    <div
+                                      class="progress-bar progress-bar-info progress-bar-striped"
+                                      role="progressbar"
+                                      attr.aria-valuenow="{{ progress }}"
+                                      aria-valuemin="0"
+                                      aria-valuemax="100"
+                                      [ngStyle]="{ width: progress + '%' }"
+                                    >
+                                      {{ progress }}%
+                                    </div>
+                                  </div></div>   </form><form><br><br>
+                          <div class="row g-3"></div>
+                                <div *ngFor="let form of forms; let i = index;">
+                                    <div *ngIf="form.show"><hr id="ligne" style="color:rgb(216, 133, 28); ">
+                                        <label for="input" class="form-label">Numéro de chèque</label>
+                                      <input minlength="7" maxlength="7" type="text" class="form-control" name="cheque{{ i+1 }}" [(ngModel)]="cheques[i].numCheque" >
+                                   7
+                                      <label for="input" class="form-label">Montant</label>
+                                      <input type="text" class="form-control" name="montant{{ i+1 }}" [(ngModel)]="cheques[i].montant">                                      <label for="input" class="form-label">Devise</label>
+                                      <select class="form-select" aria-label="Default select example" name="devise{{ i+1 }}" [(ngModel)]="cheques[i].devise" id="sel1">
+                                        <option value="Dollar">Dollar</option>
+                                        <option value="Euro">Euro</option>
+                                        <option value="TND">TND</option>
+                                      </select><br><br><br>
+                                      <div class="row">
+                                        <div class="col-8">
+                                          <label class="btn btn-default p-0">
+                                            <input type="file" (change)="selectFile($event)" />
+                                          </label>
+                                        </div>
+                                      <div *ngIf="currentFile" class="progress my-3">
+                                        <!-- <div
+                                          class="progress-bar progress-bar-info progress-bar-striped"
+                                          role="progressbar"
+                                          attr.aria-valuenow="{{ progress }}"
+                                          aria-valuemin="0"
+                                          aria-valuemax="100"
+                                          [ngStyle]="{ width: progress + '%' }"
+                                        >
+                                          {{ progress }}%
+                                        </div> -->
+                                      </div></div>
+                                    </div>
+                                </div>
+                            </form><br>
+                          
+                            <!-- Deuxième formulaire -->
+                          
+                              
+                            
+                          
+                            <div class="text-center">
+                                <button type="submit"   (click)="addForm()" class="btn btn-primary btn-lg btn-block" id="ajout">Ajouter</button>
+
+                              <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="ajouter()">Envoyer</button>
+                                          </div>
+                                          
+                                          
+                                          
+                                          
+                     </div>
+                    </div>
+                  </div>
+
+         
+         <!-- end page title -->
+
+
+
+     </div>
+  

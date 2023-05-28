@@ -1,0 +1,81 @@
+#printPage {
+    right: 500000px;
+    background-color: rgb(216, 133, 28);
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 8px 8px 35px;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    opacity: 0.9;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+  
+  
+  @import "primeicons/primeicons.css";
+  body {
+      overflow-x: hidden;
+    }
+    
+    #sidebar-wrapper {
+      min-height: 100vh;
+      
+      -webkit-transition: margin .25s ease-out;
+      -moz-transition: margin .25s ease-out;
+      -o-transition: margin .25s ease-out;
+      transition: margin .25s ease-out;
+    }
+    
+    #sidebar-wrapper .sidebar-heading {
+      padding: 0.875rem 1.25rem;
+      font-size: 1.2rem;
+    }
+    
+    #sidebar-wrapper .list-group {
+      width: 15rem;
+
+    }
+    
+    #page-content-wrapper {
+      min-width: 100vw;
+      
+    }
+    
+    #wrapper.toggled #sidebar-wrapper {
+      margin-left: 0;
+    }
+    
+    @media (min-width: 768px) {
+      #sidebar-wrapper {
+        margin-left: 0;
+        width: 240PX;
+      }
+    
+      #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+      }
+      #user{width: 40px;
+      margin-left: -160px;}
+      .show
+      {
+        margin-left: 0!important;
+      }
+      #logo{
+      margin-top: 70;
+      margin-left: -73px;}
+      .hide
+      {
+        margin-left: -15rem!important;
+      }
+      .navbar {
+        max-height: 70px;
+      }
+      
+    }
+    #input{
+      color:rgb(25,46,76);
+    }
+    

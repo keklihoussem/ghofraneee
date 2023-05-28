@@ -1,0 +1,300 @@
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+<div class="bg-light border-right" id="sidebar-wrapper" [ngClass]="status ? 'hide' : 'show'">
+  <div class="sidebar-heading"><br><img id="logo" src="../../../assets/projet interface11.png" width="350px"></div>
+  <div class="list-group list-group-flush">
+      <a href="encaissement" class="list-group-item list-group-item-action bg-light" id="input" ><br>
+          <i class="uil-home-alt" ></i> <span> page d'accueil  </span>
+      </a>
+      <a href="service" class="list-group-item list-group-item-action bg-light" id="input"> 
+          <i class="pi pi-pencil"></i>
+          <span> Recherche Remise/Chèques </span>
+      </a>
+      <a href="rechercheservice" class="list-group-item list-group-item-action bg-light" id="input">
+          <i class="pi pi-search"></i>
+          <span> Recherche Opération </span>
+      </a>
+      <a href="finjservice" class="list-group-item list-group-item-action bg-light" id="input">
+          <i class="pi pi-clock"></i>
+          <span> Fin Journée </span>
+      </a>
+  </div>
+</div>
+<!-- /#sidebar-wrapper -->
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+           
+          
+            <div class="container-fluid">
+                <button class="button-menu-mobile open-left" id="input" (click)="clickEvent()">
+                    <i class="mdi mdi-menu"></i>
+                </button>
+            </div>
+            <li style="list-style-type: none;" class="dropdown notification-list">
+                <a data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <span class="account-user-avatar">
+                        <img src="assets/images/users/avatar-1.jpg" id="user" width="30px" alt="" class="rounded-circle">
+                    </span>
+                    <span class="account-position">  Dominic Keller</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="mdi mdi-account-circle me-1"></i>
+                        <span>My Account</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="mdi mdi-account-edit me-1"></i>
+                        <span>Settings</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item" (click)="Deconnexion()" >
+                        <i class="mdi mdi-logout me-1"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </li>
+
+        </nav>
+
+        <div class="container-fluid"><br>
+            
+           <!-- start page title -->
+           <div class="row">
+                   
+            <form class="row g-3">
+          <div class="col-md-6">
+            <label for="input" class="form-label">Numéro de bordereaux</label>
+            <input type="text" class="form-control" id="numeroBordereau" value="{{ cheque.bordereau.numBordereau }}" >
+          </div>
+          <div class="col-md-6">
+            <label for="input" class="form-label">Numéro de chèque</label>
+            <input type="text" class="form-control" id="numeroCheque"  value="{{ cheque.numCheque }}" [(ngModel)]="numCheque" >
+          </div>
+          <div class="col-md-6">
+              <label for="input" class="form-label">Devise</label>
+              <input type="text" class="form-control" id="Devise" value="{{ cheque.devise }}" [(ngModel)]="devise" >
+            </div>
+            <div class="col-md-6">
+              <label for="input" class="form-label">Montant</label>
+              <input type="text" class="form-control" id="Montant" value="{{ cheque.montant }}" [(ngModel)]="montant" >
+            </div>
+         
+          <div class="col-md-6">
+            <label for="input" class="form-label">Image du chèque</label>
+            <input type="text" class="form-control" id="CodeSwift">
+          </div>
+          
+        <div class="text-center"> <br><br>
+            <button type="button" id="Rejeter" (click)="ouvrirModal()">Rejeter</button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        </div>
+        <div class="modal-body">
+            <div class="form-outline">
+                <textarea class="form-control" id="textAreaExample" rows="4" name="motif" [(ngModel)]="motif"></textarea>
+              </div>        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+            <button type="button" class="btn btn-primary" (click)="rejeter(cheque)" >Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+        </div>
+        </form>
+      
+    </div>
+        
+            
+         <!-- ... -->
+
+<div class="form-check"> <br>
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="banque" (change)="handleRadioChange($event)">
+    <label class="form-check-label" for="flexRadioDefault1">
+        <h3>Remise tirée sur une banque tunisienne</h3>
+    </label>
+</div>
+<div id="banque-form" style="display:none;">
+    <div class="col-12">
+        <label for="input" class="form-label">Le nom du tireur</label>
+        <input type="text" class="form-control" name="tireur" [(ngModel)]="tireur">
+    </div>
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label for="input" class="form-label">Numéro de compte</label>
+            <input type="text" class="form-control" name="numeroCompte" [(ngModel)]="numeroCompte">
+        </div>
+        <div class="col-md-6">
+            <label for="input" class="form-label">Nom du client</label>
+            <input type="text" class="form-control" name="nomClient" [(ngModel)]="nomClient">
+        </div>
+        <div class="col-md-6">
+            <label for="input" class="form-label">Code de la banque tirée</label>
+            <input type="text" class="form-control" name="codeBanque" [(ngModel)]="codeBanque">
+        </div>
+        <div class="col-md-6">
+            <label for="input" class="form-label">Nom de la banque tirée</label>
+            <input type="text" class="form-control" name="nomBanque" [(ngModel)]="nomBanque">
+        </div>
+
+        <div class="col-md-6">
+            <label for="input" class="form-label">Code swift destinataire</label>
+            <select class="form-control" name="codeSwift" [(ngModel)]="codeSwift">
+                <option value="MT400">MT400</option>
+                <option value="MT410">MT410</option>
+                <option value="MT456">MT456</option>
+                <option value="Autre">Autre</option>
+            </select>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary" id="Valider" (click)="BanqueTunisienne()">Valider</button>
+        </div>
+    </div>
+</div>
+
+<!-- ... -->
+            
+<div class="form-check"> <br>
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="credit" (change)="handleRadioChange($event)">
+  <label class="form-check-label" for="flexRadioDefault2">
+      <h3>Remise tirée sur l’étranger pour crédit immédiat</h3>
+  </label>
+</div>
+<div id="credit-form" style="display:none;">
+              <form>
+                  <div class="col-12">
+                      <label for="input" class="form-label"><br>Le nom du tireur</label>                            
+                      <input type="text" class="form-control" name="Tireur" [(ngModel)]="Tireur" >                            <br>
+                    </div>
+
+                  <form><form class="row g-3">
+                      <div class="col-md-6">
+                        <label for="input" class="form-label">Numéro de compte</label>
+                        <input type="text" class="form-control" name="numeroCompte" [(ngModel)]="numeroCompte">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="input" class="form-label">Nom du client</label>
+                        <input type="text" class="form-control" name="nomClient" [(ngModel)]="nomClient">
+                      </div>
+                      <div class="col-md-6">
+                          <label for="input" class="form-label">Code de la banque tirée</label>
+                          <input type="text" class="form-control" name="codeBanque" [(ngModel)]="codeBanque">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="input" class="form-label">Code pays</label>
+                          <input type="text" class="form-control" name="codePays" [(ngModel)]="codePays">
+                        </div>
+                     
+                        <div class="col-md-6">
+                          <label for="input" class="form-label">Code swift destinataire</label>
+                          <select class="form-control"  name="codeSwift" [(ngModel)]="codeSwift"  >
+                            <option value="MT400">MT400</option>
+                            <option value="MT410">MT410</option>
+                            <option value="MT456">MT456</option>
+                            <option value="Autre">Autre</option>
+                          </select>
+                        </div>
+                      
+                      <div class="text-center"> <br><br>
+                          <button type="submit" class="btn btn-primary" id="Valider" (click)="BanqueEtranger()">Valider</button>
+                        </div>
+                    </form>
+                   </form>
+              </form>
+            </div>
+            
+            <div class="form-check">                            <br>
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="encaissement" (change)="handleRadioChange($event)">
+              <label class="form-check-label" for="flexRadioDefault3">
+                <h3>Remise tirée sur l’étranger pour encaissement</h3>
+              </label>
+            </div>
+            <div id="encaissement-form" style="display:none;">
+              <form>
+                  <div class="col-12">
+                      <label for="input" class="form-label"><br>Le nom du tireur</label>                            
+                      <input type="text" class="form-control" name="nomtireur" [(ngModel)]="nomtireur" ><br>
+                    </div>
+
+                  <form><form class="row g-3">
+                      <div class="col-md-6">
+                        <label for="input" class="form-label">Numéro de compte</label>
+                        <input type="text" class="form-control" name="numCompte" [(ngModel)]="numCompte">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="input" class="form-label">Nom du client</label>
+                        <input type="text" class="form-control"  name="nomclient" [(ngModel)]="nomclient">
+                      </div>
+                      <div class="col-12">
+                          <label for="input" class="form-label">Nom banque tirée</label>                            
+                          <input type="text" class="form-control"  ><br>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                              <label for="input" class="form-label">  Code banque destinataire</label>
+                              <input type="number" class="form-control" name="codeBanqueD" [(ngModel)]="codeBanqueD" >
+                            </div>
+                            <div class="col-md-4">
+                              <label for="input" class="form-label">Nom banque destinataire</label>
+                              <input type="text" class="form-control" name="nomBanqueD" [(ngModel)]="nomBanqueD"><br>
+                            </div>
+                            <div class="col-md-2">
+                              <label for="input" class="form-label">Swift</label>
+                              <input type="text" class="form-control" name="swiftD" [(ngModel)]="swiftD">
+                            </div>
+                        
+                         
+                        
+                            <div class="form-group">
+                              <label for="input" class="form-label">Adresse</label>
+                              <input type="text" class="form-control" name="adresse" [(ngModel)]="adresse"><br>
+                            </div>
+                          
+                        
+                            <div class="col-md-6">
+                              <label for="input" class="form-label">Code banque couverture</label>
+                              <input type="text" class="form-control" name="codeBanqueC" [(ngModel)]="codeBanqueC"><br>
+                            </div>
+                            <div class="col-md-4">
+                              <label for="input" class="form-label">Nom banque couverture</label>
+                              <input type="text" class="form-control" name="nomBanqueC" [(ngModel)]="nomBanqueC"><br>
+                            </div>
+                            <div class="col-md-2">
+                              <label for="input" class="form-label">Swift</label>
+                              <input type="text" class="form-control" name="swiftC" [(ngModel)]="swiftC">
+                            </div>
+                      <div class="text-center"> <br><br>
+                          <button type="submit" class="btn btn-primary" id="Valider" (click)="BanqueEtrangerEnc()">Valider</button>
+                        </div>
+                        </div></form>
+                   </form>
+              </form>
+            </div>
+            
+            
+<!-- ... -->
+
+            
+
+      
+     <!-- end page title -->
+
+
+
+     </div>
+  

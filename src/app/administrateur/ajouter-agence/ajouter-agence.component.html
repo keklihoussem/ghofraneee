@@ -1,0 +1,102 @@
+<div class="d-flex" id="wrapper">
+
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper" [ngClass]="status ? 'hide' : 'show'">
+    <div class="sidebar-heading"><br><img id="logo" src="../../../assets/projet interface11.png" width="350px"></div>
+    <div class="list-group list-group-flush">
+        <a href="administrateur" class="list-group-item list-group-item-action bg-light" id="input" ><br>
+            <i class="uil-home-alt" ></i> <span> page d'accueil  </span>
+        </a>
+        <a href="agences" class="list-group-item list-group-item-action bg-light" id="input"> 
+            <i class="pi pi-table"></i>
+            <span> Gérer les agences</span>
+        </a>
+        <a href="clients" class="list-group-item list-group-item-action bg-light" id="input">
+            <i class="pi pi-users"></i>
+            <span> Gérer les clients </span>
+        </a>
+        <a href="user" class="list-group-item list-group-item-action bg-light" id="input">
+            <i class="pi pi-users"></i>
+            <span> Gérer les utilisateurs </span>
+        </a>
+    </div>
+</div>
+<!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+           
+          
+            <div class="container-fluid">
+                <button class="button-menu-mobile open-left" id="input" (click)="clickEvent()">
+                    <i class="mdi mdi-menu"></i>
+                </button>
+            </div>
+            <li style="list-style-type: none;" class="dropdown notification-list">
+                <a data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <span class="account-user-avatar">
+                        <img src="assets/images/users/avatar-1.jpg" id="user" width="30px" alt="" class="rounded-circle">
+                    </span>
+                    <span class="account-position">  Dominic Keller</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="mdi mdi-account-circle me-1"></i>
+                        <span>My Account</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="mdi mdi-account-edit me-1"></i>
+                        <span>Settings</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item" (click)="Deconnexion()">
+                        <i class="mdi mdi-logout me-1"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </li>
+
+        </nav>
+
+        <div class="container-fluid"><br>
+            
+             <!-- start page title -->
+             <br><br>
+             <div class="row">
+               
+                <form class="row g-3">
+                    <div class="col-md-6">
+                      <label for="input" class="form-label">Code Agence</label>
+                      <input type="number" class="form-control" name="codeAgence" [(ngModel)]="codeAgence" >
+                    </div>
+                    <div class="col-md-6">
+                      <label for="input" class="form-label">Nom Agence</label>
+                      <input type="text" class="form-control" name="nomAgence" [(ngModel)]="nomAgence" >
+                    </div>
+                    <div class="col-md-6">
+                        <label for="input" class="form-label">adresse</label>
+                        <input type="text" class="form-control" name="adresse" [(ngModel)]="adresse" >
+                      </div>
+                      <div class="col-md-6">
+                        <label for="input" class="form-label">Telephone</label>
+                        <input type="number" class="form-control" name="Telephone" [(ngModel)]="Telephone">
+                      </div>
+                    
+                    <div class="text-center"> <br><br>
+                        <button type="submit" class="btn btn-primary" (click)="ajouterAgence()">Envoyer</button>
+                      </div>
+      
+                  </form>
+         </div>
+         <!-- end page title -->
+
+
+
+     </div>
+  

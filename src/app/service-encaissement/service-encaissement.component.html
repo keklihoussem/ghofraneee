@@ -1,0 +1,129 @@
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+<div class="bg-light border-right" id="sidebar-wrapper" [ngClass]="status ? 'hide' : 'show'">
+    <div class="sidebar-heading"><br><img id="logo" src="../../../assets/projet interface11.png" width="350px"></div>
+    <div class="list-group list-group-flush">
+        <a href="encaissement" class="list-group-item list-group-item-action bg-light" id="input" ><br>
+            <i class="uil-home-alt" ></i> <span> page d'accueil  </span>
+        </a>
+        <a href="service" class="list-group-item list-group-item-action bg-light" id="input"> 
+            <i class="pi pi-pencil"></i>
+            <span> Recherche Remise/Chèques </span>
+        </a>
+        <a href="rechercheservice" class="list-group-item list-group-item-action bg-light" id="input">
+            <i class="pi pi-search"></i>
+            <span> Recherche Opération </span>
+        </a>
+        <a href="finjservice" class="list-group-item list-group-item-action bg-light" id="input">
+            <i class="pi pi-clock"></i>
+            <span> Fin Journée </span>
+        </a>
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+   <!-- Page Content -->
+  <div id="page-content-wrapper">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+       
+      
+        <div class="container-fluid">
+            <button class="button-menu-mobile open-left" id="input" (click)="clickEvent()">
+                <i class="mdi mdi-menu"></i>
+            </button>
+        </div>
+            <li style="list-style-type: none;" class="dropdown notification-list">
+                <a data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <span class="account-position"> hola</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="mdi mdi-account-circle me-1"></i>
+                        <span> code Agence :</span>
+                    </a>
+
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item" (click)="Deconnexion()">
+                        <i class="mdi mdi-logout me-1"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </li>
+
+        </nav>
+
+       <!-- Start Content-->
+             <div class="container-fluid">
+ 
+                 <!-- start page title -->
+                 <br><br>
+                     <div class="row">
+                         <h3 class="card-title">Liste des chèques en route</h3><br><br>
+     
+                         <div class="col-12">
+                           <div class="card">
+                             <div class="card-body">
+                               <div class="table-responsive">
+                                 <table class="table align-middle text-nowrap" *ngIf="liste && liste.length > 0">
+                                     <thead>
+                                         <tr>
+                                             <th class="text-dark font-medium fs-4">Numéro de bordereaux</th>
+                                             <th class="text-dark font-medium fs-4">Numéro de chèque</th>
+                                             <th class="text-dark font-medium fs-4">Devise</th>
+                                             <th class="text-dark font-medium fs-4">Montant</th>
+                                             <th class="text-dark font-medium fs-4">Image du chèque</th>
+                                             <th class="text-dark font-medium fs-4">status</th>
+                                             <th class="text-dark font-medium fs-4"></th>
+                                             <th class="text-dark font-medium fs-4"></th>
+     
+                                         </tr>
+                                     </thead>
+                                     <tbody>
+                                         <tr *ngFor="let cheque of liste">
+                                             <td class="fs-4">{{ cheque.bordereau.numBordereau }}</td>
+                                             <td class="fs-4">{{ cheque.numCheque }}</td>
+                                             <td  class="fs-4"> {{ cheque.devise }}</td>
+                                             <td class="fs-4"> {{ cheque.montant }}</td>
+                                             <td>
+                                                
+                                             </td>
+                                             <td >
+                                                <div class="status-circle" [ngClass]="cheque.couleur"></div>
+                                              </td>
+                                             <td>
+                                                 <h5 class="mb-0 fw-normal"></h5> <td>
+                                                 <button class="btn btn-primary btn-sm" id="Accusé" (click)="onAccuseClick(cheque)" [disabled]="accuseClicked">Accusé de réception</button>
+                                                </td> <td> <button class="btn btn-primary btn-sm" id="Ouverture" (click)="onOuvertureClick(cheque)" [disabled]="!accuseClicked">Ouverture</button>
+                                                 
+
+                                             </td>
+                                             <td>
+                                                
+                                             </td>
+                                         </tr>              
+                                     </tbody>
+                                 </table>
+                             </div>
+                             </div>
+                           </div>
+                         
+                     </div>
+                 <!-- end page title -->
+ 
+ 
+ 
+             </div>
+             <!-- container -->
+ 
+         </div>
+         <!-- content -->
+         <!-- end page title -->
+
+
+
+     </div>
+  

@@ -1,0 +1,90 @@
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper" [ngClass]="status ? 'hide' : 'show'">
+        <div class="sidebar-heading"><br><img id="logo" src="../../../assets/projet interface11.png" width="350px"></div>
+        <div class="list-group list-group-flush">
+            <a href="client" class="list-group-item list-group-item-action bg-light" id="input" ><br>
+                <i class="uil-home-alt" ></i> <span> page d'accueil  </span>
+            </a>
+           
+        </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+ <!-- Page Content -->
+ <div id="page-content-wrapper">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+       
+      
+        <div class="container-fluid">
+            <button class="button-menu-mobile open-left" id="input" (click)="clickEvent()">
+                <i class="mdi mdi-menu"></i>
+            </button>
+        </div>
+            <li style="list-style-type: none;" class="dropdown notification-list">
+                <a data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <span class="account-position"> {{ user.nom }} {{ user.prenom }}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="mdi mdi-account-circle me-1"></i>
+                        <span> code Agence :{{ user.agence.codeAgence }}</span>
+                    </a>
+
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item" (click)="Deconnexion()">
+                        <i class="mdi mdi-logout me-1"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </li>
+
+        </nav>
+
+        <div class="container-fluid"><br>
+            
+         <!-- start page title -->
+         <div class="row">
+            <h1>Espace Client</h1><br><br>
+            <h3 >Bienvenue {{ client.nomClient }}  {{ client.prenomClient }} a votre espace client</h3><br><br>
+            <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table align-middle text-nowrap" *ngIf="client!=null"  >
+                          <thead>
+                              <tr>
+                                  <th class="text-dark font-medium fs-4">Numéro de client</th>
+                                  <th class="text-dark font-medium fs-4">Nom Client</th>
+                                  <th class="text-dark font-medium fs-4">prenom Client</th>
+                                  <th class="text-dark font-medium fs-4">Numéro compte</th>
+                                  <th class="text-dark font-medium fs-4">RIB</th>
+                                  <th class="text-dark font-medium fs-4">Numero cheque</th>
+                                  <th class="text-dark font-medium fs-4">montant</th>
+                                  <th class="text-dark font-medium fs-4">devise</th>
+                                  <th class="text-dark font-medium fs-4">status</th> 
+                              </tr>
+                          </thead>
+                          <tbody>
+                             <tr  *ngFor="let cheque of client.cheques" >
+                                <td class="fs-4">{{ client.numClient  }}</td>
+                                <td class="fs-4">{{ client.nomClient }}</td>
+                                <td  class="fs-4">{{ client.prenomClient }}</td>
+                                <td class="fs-4">{{ co.numCompte }}</td>
+                                <td class="fs-4">{{ co.rib }}</td>
+                                <td class="fs-4">{{ cheque.numCheque }}</td>
+                                <td class="fs-4">{{ cheque.montant }}</td>
+                                <td class="fs-4">{{ cheque.devise }}</td>
+                                <td class="fs-4">{{ cheque.statut }}</td>
+                             </tr>                      
+                          </tbody>
+                      </table>
+                  </div>
+                  </div>
+                </div>
+
+    

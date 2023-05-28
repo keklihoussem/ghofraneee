@@ -1,0 +1,37 @@
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6">
+        <img id="image" src="../../assets/projet interface11.png"
+        class="img-fluid" alt="Phone image">
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <label class="form-label d-flex justify-content-around align-items-center mb-4 text-center" for="form1Example13">
+          <h1>Se connecter</h1></label>
+        <form>
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" >Matricule</label>
+            <input type="text"  placeholder="Entrer votre Matricule" name="Matricule" required  [(ngModel)]="Matricule"  class="form-control form-control-lg" class="form-control form-control-lg" />
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" >Mot de passe</label>
+            <input type="password"placeholder="Entrer votre mot de passe" name="Matricule" name="password" required [(ngModel)]="password"  class="form-control form-control-lg" />
+          </div>
+
+          <div class="d-flex justify-content-around align-items-center mb-4">
+            <!-- Checkbox -->
+            
+
+          <!-- Submit button -->
+          <button type="submit"  (click)="LoginU(); identifier()" class="btn btn-primary btn-lg btn-block" >Connexion</button>
+
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>

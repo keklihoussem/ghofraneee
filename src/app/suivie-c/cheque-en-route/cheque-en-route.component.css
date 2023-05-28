@@ -1,0 +1,85 @@
+@import "primeicons/primeicons.css";
+body {
+    overflow-x: hidden;
+  }
+  
+  #sidebar-wrapper {
+    min-height: 100vh;
+    
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+  }
+  
+  #sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+  }
+  
+  #sidebar-wrapper .list-group {
+    width: 15rem;
+  }
+  
+  #page-content-wrapper {
+    min-width: 100vw;
+  }
+  
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+  }
+  
+  @media (min-width: 768px) {
+    #sidebar-wrapper {
+      margin-left: 0;
+      width: 240PX;
+    }
+  
+    #page-content-wrapper {
+      min-width: 0;
+      width: 100%;
+    }
+    #user{width: 40px;
+    margin-left: -160px;}
+    .show
+    {
+      margin-left: 0!important;
+    }
+    #logo{
+    margin-top: 60;
+    margin-left: -73px;}
+    .hide
+    {
+      margin-left: -15rem!important;
+    }
+    .navbar {
+      max-height: 70px;
+    }
+    
+  }
+  #input{
+    color:rgb(25,46,76);
+  }
+
+  .status-circle {
+    display: inline-block;
+    width: 10px;
+    height: 15px;
+    border-radius: 50%;
+    
+  }
+  
+  .red {
+    background-color: #ff0000;
+    color: #ffffff;
+  }
+  
+  .green {
+    background-color: #00ff00;
+    color: #ffffff;
+  }
+  
+  .orange {
+    background-color: orange;
+    color: #000000;
+  }

@@ -1,0 +1,127 @@
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper" [ngClass]="status ? 'hide' : 'show'">
+        <div class="sidebar-heading"><br><img id="logo" src="../../../assets/projet interface11.png" width="350px"></div>
+        <div class="list-group list-group-flush">
+            <a href="agence" class="list-group-item list-group-item-action bg-light" id="input" ><br>
+                <i class="uil-home-alt" ></i> <span> page d'accueil  </span>
+            </a>
+            <a href="cheque" class="list-group-item list-group-item-action bg-light" id="input"> 
+                <i class="pi pi-pencil"></i>
+                <span> Saisie Chéque </span>
+            </a>
+            <a href="suivie" class="list-group-item list-group-item-action bg-light" id="input">
+                <i class="pi pi-server"></i>
+                <span> Suivie des Chéques </span>
+            </a>
+            <a href="recherche" class="list-group-item list-group-item-action bg-light" id="input">
+                <i class="pi pi-search"></i>
+                <span> Recherche Opération </span>
+            </a>
+            <a href="fin" class="list-group-item list-group-item-action bg-light" id="input">
+                <i class="pi pi-clock"></i>
+                <span> Fin Journée </span>
+            </a>
+        </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+
+     <!-- Page Content -->
+     <div id="page-content-wrapper">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+           
+          
+            <div class="container-fluid">
+                <button class="button-menu-mobile open-left" id="input" (click)="clickEvent()">
+                    <i class="mdi mdi-menu"></i>
+                </button>
+            </div>
+            <li style="list-style-type: none;" class="dropdown notification-list">
+                <a data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <span class="account-user-avatar">
+                        <img src="assets/images/users/avatar-1.jpg" id="user" width="30px" alt="" class="rounded-circle">
+                    </span>
+                    <span class="account-position">  Dominic Keller</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="mdi mdi-account-circle me-1"></i>
+                        <span>My Account</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="mdi mdi-account-edit me-1"></i>
+                        <span>Settings</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item" (click)="Deconnexion()">
+                        <i class="mdi mdi-logout me-1"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </li>
+
+        </nav>
+
+        <div class="container-fluid"><br>
+            
+          <!-- start page title -->
+          <br><br>
+          <div class="row">
+              <h3 class="card-title">Liste des chèques traités</h3><br><br>
+
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table align-middle text-nowrap" *ngIf="liste && liste.length > 0" >
+                          <thead>
+                             <tr>
+                                 <th class="text-dark font-medium fs-4">Numéro de bordereaux</th>
+                                 <th class="text-dark font-medium fs-4">Numéro de chèque</th>
+                                 <th class="text-dark font-medium fs-4">Devise</th>
+                                 <th class="text-dark font-medium fs-4">Montant</th>
+                                 <th class="text-dark font-medium fs-4">date de reception</th>
+                                 <th class="text-dark font-medium fs-4">statut</th>
+                                 <th class="text-dark font-medium fs-4">Date de sortie</th> 
+                             </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let cheque of liste" >
+                                 <td class="fs-4"><b>{{ cheque.bordereau.numBordereau }}</b></td>
+                                 <td class="fs-4">{{ cheque.numCheque }}</td>
+                                 <td  class="fs-4"> {{ cheque.devise }}</td>
+                                 <td class="fs-4"> {{ cheque.montant }}</td>
+                                 <td class="fs-4">{{ cheque.dateReception }}</td>
+                                 <td class="fs-4">{{ cheque.statut }}</td>
+                                 <td class="fs-4">{{ cheque.dateSortie }}</td>
+                              </tr>              
+                          </tbody>
+                      </table>
+                  </div>
+                  </div>
+                </div>
+              
+          </div>
+      <!-- end page title -->
+    
+    
+    
+                </div>
+                   
+                    </div>
+                    </div>
+                  </div>
+
+        
+         <!-- end page title -->
+
+
+
+    
