@@ -17,8 +17,12 @@ export class ClientComponent implements OnInit{
   user!:User;
   client!:Client;
   co!:Compte;
+  nom!:any;
+  prenom!:any;
 
   ngOnInit(): void {
+    this.nom=this.localStore.getData('nom');
+    this.prenom=this.localStore.getData('prenom');
       this.user = history.state.user;
       console.log(this.user);
       this.ClientUser();  

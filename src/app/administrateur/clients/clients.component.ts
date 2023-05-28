@@ -10,7 +10,11 @@ import { LocalService } from 'src/app/local.service';
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
+  nom!:any;
+  prenom!:any;
   ngOnInit(): void {
+    this.nom=this.localStore.getData('nom');
+    this.prenom=this.localStore.getData('prenom');
     let data=this.localStore.getData('role');
     if(data=="0"){
       this.router.navigate(["/"]);

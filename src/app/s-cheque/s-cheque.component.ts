@@ -17,7 +17,11 @@ import { LocalService } from '../local.service';
 })
 export class SChequeComponent implements OnInit {
   forms: any[] = [];
+  nom!:any;
+prenom!:any;
   ngOnInit(): void {
+    this.nom=this.localStore.getData('nom');
+this.prenom=this.localStore.getData('prenom');
     let data=this.localStore.getData('role');
       if(data=="0"){
         this.router.navigate(["/"]);
@@ -123,7 +127,6 @@ cheques:Cheque[] = [];
           if (cheque === null) {
             alert("Numéro de chèque existe déjà");
           } else {
-
             this.us.enregistrer(cheque).subscribe({
               next: (res) => {
                 console.log(res);
@@ -131,7 +134,8 @@ cheques:Cheque[] = [];
                   const file: File | null = this.selectedFiles.item(0);
                   if (file) {
                     this.currentFile = file;
-                    this.us.uploadImgCheque(this.currentFile as File, this.cheque.numCheque).subscribe(
+                   
+                    this.us.uploadImgCheque(this.currentFile as File, numc).subscribe(
                       (res) => {
                         console.log('res', res);
                       }
@@ -140,7 +144,7 @@ cheques:Cheque[] = [];
                 }
                 console.log("Enregistrement réussi: ", res);
                 alert("Enregistrement réussi");
-                this.router.navigate(["/en-route"], { state: { cheque: res } });
+               // this.router.navigate(["/en-route"], { state: { cheque: res } });
               },
               error: (error) => {
                 console.log("Erreur lors de la saisie du chèque: ", error);

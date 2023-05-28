@@ -10,7 +10,13 @@ import { User } from '../user';
 })
 export class AdministrateurComponent implements OnInit{
   user!:User;
+  nom!:any;
+  prenom!:any;
   ngOnInit(): void {
+    this.nom=this.localStore.getData('nom');
+    console.log(this.nom);
+    this.prenom=this.localStore.getData('prenom');
+    console.log(this.prenom);
     this.user = history.state.user;
     let data=this.localStore.getData('role');
     if(data=="0"){

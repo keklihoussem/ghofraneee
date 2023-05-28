@@ -21,9 +21,13 @@ export class AgenceComponent implements AfterViewInit, OnInit { showOptions: boo
     this.showOptions = !this.showOptions;
   }
   user!:User;
+  nom!:any;
+  prenom!:any;
   ngOnInit() {
     this.user = history.state.user;
     this.createCharts();
+    this.nom=this.localStore.getData('nom');
+    this.prenom=this.localStore.getData('prenom');
     let data=this.localStore.getData('role');
       if(data=="0"){
         this.router.navigate(["/"]);

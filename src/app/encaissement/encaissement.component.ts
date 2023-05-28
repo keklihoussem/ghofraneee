@@ -9,9 +9,12 @@ import { User } from '../user';
   styleUrls: ['./encaissement.component.css']
 })
 export class EncaissementComponent implements OnInit{
-
+  nom!:any;
+  prenom!:any;
 user!:User;
   ngOnInit(): void {
+    this.nom=this.localStore.getData('nom');
+    this.prenom=this.localStore.getData('prenom');
     this.user = history.state.user;
     let data=this.localStore.getData('role');
     if(data=="0"){

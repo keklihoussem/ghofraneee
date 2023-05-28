@@ -10,7 +10,12 @@ import { LocalService } from 'src/app/local.service';
   styleUrls: ['./cheque-traite.component.css']
 })
 export class ChequeTraiteComponent implements OnInit{
+  nom!:any;
+prenom!:any;
+
   ngOnInit(): void {
+    this.nom=this.localStore.getData('nom');
+this.prenom=this.localStore.getData('prenom');
     this.ListeTraite();
     let data=this.localStore.getData('role');
       if(data=="0"){

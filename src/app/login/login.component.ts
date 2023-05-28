@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit{
   Matricule!: Number;
   password!:String;
   r!: Role;
+  nom!:String;
+
 
   constructor(private us: UserserviceService, private router :Router,private localStore: LocalService){}
 
@@ -27,7 +29,10 @@ export class LoginComponent implements OnInit{
   LoginU(){
     var mat=this.Matricule;
     var pwd=this.password;
-    this.us.getUserData(mat, pwd).subscribe((user: { role: string }) =>{
+    this.us.getUserData(mat, pwd).subscribe((user: { role: string ,nom:any,prenom:any}) =>{
+      this.localStore.saveData('nom',user.nom);
+      this.localStore.saveData('prenom',user.prenom);
+      console.log("user"+user.nom);
       if(user.role === Role.Client.toString()) {
         this.router.navigate(["/client"],  { state: { user } });
         this.localStore.saveData('role',"4");
@@ -35,6 +40,7 @@ export class LoginComponent implements OnInit{
       } else if(user.role === Role.Agence.toString()) {
         this.router.navigate(["/agence"],  { state: { user } });
         this.localStore.saveData('role',"1");
+       
       } else if(user.role === Role.ServiceEncaissement.toString()) {
         this.router.navigate(["/encaissement"],  { state: { user } });
         this.localStore.saveData('role',"2");

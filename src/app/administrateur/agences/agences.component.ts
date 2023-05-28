@@ -10,7 +10,11 @@ import { LocalService } from 'src/app/local.service';
   styleUrls: ['./agences.component.css']
 })
 export class AgencesComponent implements OnInit{
+  nom!:any;
+  prenom!:any;
   ngOnInit(): void {
+    this.nom=this.localStore.getData('nom');
+    this.prenom=this.localStore.getData('prenom');
     this.listetoutAgences();
     let data=this.localStore.getData('role');
       if(data=="0"){

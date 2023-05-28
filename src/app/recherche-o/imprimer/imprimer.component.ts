@@ -10,9 +10,12 @@ import { LocalService } from 'src/app/local.service';
 })
 export class ImprimerComponent implements OnInit {
   checkInfo!: Cheque;
-
+  nom!:any;
+  prenom!:any;
   constructor(private router: Router,private localStore:LocalService) { }
   ngOnInit(): void {
+    this.nom=this.localStore.getData('nom');
+this.prenom=this.localStore.getData('prenom');
     this.checkInfo = history.state.data;
     let data=this.localStore.getData('role');
       if(data=="0"){

@@ -13,7 +13,11 @@ import { UserserviceService } from 'src/app/userservice.service';
   styleUrls: ['./espace-user.component.css']
 })
 export class EspaceUserComponent implements OnInit{
+  nom!:any;
+  prenom!:any;
   ngOnInit(): void {
+    this.nom=this.localStore.getData('nom');
+    this.prenom=this.localStore.getData('prenom');
     this.afficherUsers();
     let data=this.localStore.getData('role');
     if(data=="0"){

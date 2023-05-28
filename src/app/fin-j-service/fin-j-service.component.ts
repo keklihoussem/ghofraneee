@@ -11,7 +11,11 @@ import { Bordereau } from '../bordereau';
   styleUrls: ['./fin-j-service.component.css']
 })
 export class FinJServiceComponent implements OnInit {
+  nom!:any;
+prenom!:any;
 ngOnInit(): void {
+this.nom=this.localStore.getData('nom');
+this.prenom=this.localStore.getData('prenom');
   this.FinJournee();
   let data=this.localStore.getData('role');
   if(data=="0"){

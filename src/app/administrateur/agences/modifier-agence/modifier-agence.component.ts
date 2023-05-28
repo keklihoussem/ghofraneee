@@ -11,7 +11,11 @@ import { LocalService } from 'src/app/local.service';
 })
 export class ModifierAgenceComponent implements OnInit{
   agence!:Agence;
+  nom!:any;
+  prenom!:any;
   ngOnInit(): void {
+    this.nom=this.localStore.getData('nom');
+    this.prenom=this.localStore.getData('prenom');
     this.agence = history.state.agence;
     console.log(this.agence);
     let data=this.localStore.getData('role');

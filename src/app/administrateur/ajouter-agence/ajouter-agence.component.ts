@@ -10,8 +10,11 @@ import { LocalService } from 'src/app/local.service';
   styleUrls: ['./ajouter-agence.component.css']
 })
 export class AjouterAgenceComponent implements OnInit {
-
+  nom!:any;
+  prenom!:any;
   ngOnInit(): void {
+    this.nom=this.localStore.getData('nom');
+    this.prenom=this.localStore.getData('prenom');
     let data=this.localStore.getData('role');
     if(data=="0"){
       this.router.navigate(["/"]);

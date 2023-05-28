@@ -14,7 +14,11 @@ import { UserserviceService } from 'src/app/userservice.service';
   styleUrls: ['./ajouter-user.component.css']
 })
 export class AjouterUserComponent implements OnInit{
+  nom1!:any;
+  prenom1!:any;
   ngOnInit(): void {
+    this.nom1=this.localStore.getData('nom');
+    this.prenom1=this.localStore.getData('prenom');
     let data=this.localStore.getData('role');
     if(data=="0"){
       this.router.navigate(["/"]);

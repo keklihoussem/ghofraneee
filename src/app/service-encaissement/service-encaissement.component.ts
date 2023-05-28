@@ -12,7 +12,11 @@ import { User } from '../user';
 })
 export class ServiceEncaissementComponent implements OnInit {
   user!:User;
+  nom!:any;
+prenom!:any;
   ngOnInit(): void {
+    this.nom=this.localStore.getData('nom');
+this.prenom=this.localStore.getData('prenom');
     this.user = history.state.user;
     this.couleur();
     let data=this.localStore.getData('role');

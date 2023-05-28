@@ -12,7 +12,11 @@ import { UserserviceService } from 'src/app/userservice.service';
 })
 export class ModifierUserComponent implements OnInit{
   user!:User; 
+  nom1!:any;
+  prenom1!:any; 
   ngOnInit(): void {
+    this.nom1=this.localStore.getData('nom');
+    this.prenom1=this.localStore.getData('prenom');
     this.user = history.state.user;
     console.log(this.user);
     let data=this.localStore.getData('role');

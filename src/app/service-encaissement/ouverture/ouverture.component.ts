@@ -18,6 +18,8 @@ import { LocalService } from 'src/app/local.service';
 })
 export class OuvertureComponent implements AfterViewInit,OnInit{
   cheque!:Cheque;
+  nom!:any;
+prenom!:any;
   ngAfterViewInit() {
     const banqueForm = document.getElementById('banque-form') as HTMLElement;
     const creditForm = document.getElementById('credit-form') as HTMLElement;
@@ -26,6 +28,8 @@ export class OuvertureComponent implements AfterViewInit,OnInit{
   }
 
   ngOnInit(): void {
+    this.nom=this.localStore.getData('nom');
+this.prenom=this.localStore.getData('prenom');
     this.cheque = history.state.cheque;
     $(document).ready(function() {
       $('#exampleModal').on('show.bs.modal', function () {

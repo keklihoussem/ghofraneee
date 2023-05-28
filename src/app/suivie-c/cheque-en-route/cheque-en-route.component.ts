@@ -11,7 +11,11 @@ import { LocalService } from 'src/app/local.service';
   styleUrls: ['./cheque-en-route.component.css']
 })
 export class ChequeEnRouteComponent implements OnInit {
+  nom!:any;
+prenom!:any;
   ngOnInit(): void {
+    this.nom=this.localStore.getData('nom');
+   this.prenom=this.localStore.getData('prenom');
   this.couleur();
   let data=this.localStore.getData('role');
       if(data=="0"){

@@ -15,7 +15,12 @@ export class FinJComponent implements OnInit{
   listeB!:Bordereau[];
   nombreB!:Number;
   nombreC!:Number;
+  nom!:any;
+prenom!:any;
+
   ngOnInit(): void {
+    this.nom=this.localStore.getData('nom');
+this.prenom=this.localStore.getData('prenom');
     this.FinJournee();
     let data=this.localStore.getData('role');
       if(data=="0"){
